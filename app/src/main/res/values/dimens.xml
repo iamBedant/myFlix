@@ -1,0 +1,28 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="card_view_radius">2dp</dimen>
+    <dimen name="detail_backdrop_height">200dp</dimen>
+
+
+    <dimen name="details_backdrop_height">200dp</dimen>
+    <dimen name="details_poster_width">100dp</dimen>
+    <dimen name="details_poster_height">150dp</dimen>
+    <dimen name="details_poster_margin_top">172dp</dimen>
+
+    <dimen name="margin_inline">4dp</dimen>
+    <dimen name="margin_default">8dp</dimen>
+    <dimen name="margin_large">16dp</dimen>
+    <dimen name="app_bar_overlap_padding">64dp</dimen>
+    <dimen name="detail_backdrop_height_large">400dp</dimen>
+    <dimen name="app_bar_overlap_padding_large">100dp</dimen>
+
+    <integer name="anim_short_duration">200</integer>
+
+    <!-- misc dimensions -->
+    <item name="body_text_line_spacing" format="float" type="dimen">1.15</item>
+
+    <dimen name="desired_column_width">150dp</dimen>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sort_values">
+        <item>@string/movies_favorites</item>
+        <item>@string/movies_highest_rated</item>
+        <item>@string/movies_most_popular</item>
+        <item>@string/movies_upcoming</item>
+        <item>@string/movies_now_showing</item>
+    </string-array>
+
+</resources>

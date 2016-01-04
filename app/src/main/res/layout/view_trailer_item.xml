@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/play_trailer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/trailer_background"
+    android:clickable="true"
+    android:orientation="horizontal"
+    android:layout_margin="1dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_large"
+        android:orientation="horizontal"
+        android:background="?android:attr/selectableItemBackground">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/thumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:paddingLeft="@dimen/margin_large">
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/Base.TextAppearance.AppCompat.Subhead"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="My Movie Name Trailer" />
+
+            <TextView
+                android:id="@+id/trailer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name"
+                tools:text="Size: 720p" />
+            <TextView
+                android:layout_below="@id/trailer"
+                android:id="@+id/language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Language: English"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

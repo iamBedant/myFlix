@@ -1,0 +1,126 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    app:behavior_overlapTop="@dimen/app_bar_overlap_padding_large"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/intro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/poster"
+                            android:layout_width="@dimen/details_poster_width"
+                            android:layout_height="@dimen/details_poster_height"
+                            android:orientation="horizontal"
+                            android:transitionName="poster"
+                            tools:background="#F00" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/poster">
+
+                            <TextView
+                                android:id="@+id/title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/margin_large"
+                                android:layout_marginLeft="@dimen/margin_large"
+                                android:layout_marginRight="@dimen/margin_large"
+                                android:layout_marginStart="@dimen/margin_large"
+                                android:layout_marginTop="@dimen/margin_default"
+                                android:ellipsize="end"
+                                android:maxLines="2"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                                tools:text="The Hunger Games: Mockingjay - Part 2" />
+
+                            <TextView
+                                android:id="@+id/release_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/title"
+                                android:layout_marginEnd="@dimen/margin_default"
+                                android:layout_marginLeft="@dimen/margin_large"
+                                android:layout_marginRight="@dimen/margin_default"
+                                android:layout_marginStart="@dimen/margin_large"
+                                android:layout_marginTop="2dp"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                tools:text="2015" />
+
+                            <LinearLayout
+                                android:id="@+id/rating_container"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/release_date"
+                                android:layout_marginLeft="@dimen/margin_large"
+                                android:layout_marginStart="@dimen/margin_large"
+                                android:layout_marginTop="-8dp"
+                                android:clipChildren="false"
+                                android:gravity="bottom"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/rating"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+                                    android:textColor="?android:attr/textColorPrimary"
+                                    tools:text="7.3" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/margin_default"
+                                    android:text="@string/rating_denominator"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textColor="?android:attr/textColorSecondary" />
+
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <android.support.design.widget.TabLayout
+                        android:id="@+id/tabs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager"
+                android:background="#100"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

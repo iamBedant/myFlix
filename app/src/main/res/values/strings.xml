@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MyFlix</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_movie_details">MovieDetails</string>
+    <string name="rating_denominator">10</string>
+    <string name="read_more_button_text">READ MORE</string>
+
+
+    <string name="movies_filter">Filter</string>
+    <string name="movies_favorites">Favorites</string>
+    <string name="movies_highest_rated">Highest Rated</string>
+    <string name="movies_most_popular">Most Popular</string>
+    <string name="movies_upcoming">Upcoming Movies</string>
+    <string name="movies_now_showing">Now Showing</string>
+    <string name="movie_Share">Share Movie</string>
+    <string name="share_trailer">Share with your Friend</string>
+    <string name="no_review_available">No Review Available</string>
+</resources>

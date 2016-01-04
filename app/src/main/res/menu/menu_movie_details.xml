@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.myflix.bebi2.myflix.MovieDetails.MovieDetails">
+    <item
+        android:id="@+id/share"
+        android:icon="@drawable/ic_share_white_24dp"
+        android:title="@string/movie_Share"
+        app:showAsAction="ifRoom" />
+</menu>

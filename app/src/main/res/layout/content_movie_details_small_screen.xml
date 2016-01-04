@@ -1,0 +1,122 @@
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    app:behavior_overlapTop="@dimen/app_bar_overlap_padding"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:paddingTop="10dp">
+
+        <LinearLayout
+            android:id="@+id/linear_layout_intro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/app_bar_overlap_padding"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="@dimen/details_poster_width"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginStart="@dimen/margin_large"
+                android:orientation="horizontal"
+                tools:background="#000" />
+
+            <RelativeLayout
+                android:id="@+id/intro"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginEnd="@dimen/margin_large"
+                    android:layout_marginLeft="@dimen/margin_large"
+                    android:layout_marginRight="@dimen/margin_large"
+                    android:layout_marginStart="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/margin_default"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    tools:text="The Hunger Games: Mockingjay - Part 2" />
+
+                <TextView
+                    android:id="@+id/release_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title"
+                    android:layout_marginEnd="@dimen/margin_default"
+                    android:layout_marginLeft="@dimen/margin_large"
+                    android:layout_marginRight="@dimen/margin_default"
+                    android:layout_marginStart="@dimen/margin_large"
+                    android:layout_marginTop="2dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    tools:text="2015" />
+
+                <LinearLayout
+                    android:id="@+id/rating_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/release_date"
+                    android:layout_marginLeft="@dimen/margin_large"
+                    android:layout_marginStart="@dimen/margin_large"
+                    android:layout_marginTop="-8dp"
+                    android:clipChildren="false"
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+                        android:textColor="?android:attr/textColorPrimary"
+                        tools:text="7.3" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_default"
+                        android:text="@string/rating_denominator"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="?android:attr/textColorSecondary" />
+
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/poster"
+            android:layout_width="@dimen/details_poster_width"
+            android:layout_height="@dimen/details_poster_height"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginStart="@dimen/margin_large"
+            android:orientation="horizontal"
+            android:transitionName="poster"
+            tools:background="#F00" />
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linear_layout_intro"
+             />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tabs" />
+
+    </RelativeLayout>
+</android.support.v4.widget.NestedScrollView>
