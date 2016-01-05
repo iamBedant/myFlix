@@ -24,12 +24,17 @@
         <activity
             android:name=".MovieDetails.MovieDetails"
             android:label="@string/title_activity_movie_details"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <provider
+            android:name=".DB.generated.FavouriteMovieProvider"
             android:authorities="com.myflix.bebi2.myflix.DB.FavouriteMovieProvider"
-            android:name="com.myflix.bebi2.myflix.DB.generated.FavouriteMovieProvider"
-            android:exported="false"/>
+            android:exported="false" />
+
+        <activity
+            android:name=".About.About"
+            android:label="@string/title_activity_bout"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

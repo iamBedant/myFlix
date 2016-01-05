@@ -1,6 +1,8 @@
 package com.myflix.bebi2.myflix.MovieDetails;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
@@ -48,12 +50,21 @@ public class ReviewFragment extends Fragment implements onRTItemClick {
 
     Context mContext;
     ReviewAdapter mAdapter;
+    Boolean isAvailable = false;
+    Boolean isEmpty = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_rating, container, false);
         ButterKnife.bind(this, view);
+        if(!isAvailable){
+            progressBar.setVisibility(View.VISIBLE);
+        }
+        if(isEmpty){
+            empty.setText(R.string.no_review_available);
+            empty.setVisibility(View.VISIBLE);
+        }
         SetUpRecyclerView();
         return view;
     }
@@ -65,6 +76,8 @@ public class ReviewFragment extends Fragment implements onRTItemClick {
         mAdapter = new ReviewAdapter(mContext, this);
 
         if (savedInstanceState != null) {
+            isEmpty = savedInstanceState.getBoolean(Config.BUNDLE_IS_EMPTY);
+            isAvailable = savedInstanceState.getBoolean(Config.BUNDLE_IS_LOADED);
             ArrayList<Reviews> reviews = savedInstanceState.getParcelableArrayList(Config.BUNDLE_REVIEWS);
             mAdapter.addAll(reviews);
         }
@@ -72,20 +85,23 @@ public class ReviewFragment extends Fragment implements onRTItemClick {
 
     @Subscribe
     public void ReviewLoadedEvent(ReviewLoadedEvent event) {
+        isAvailable = true;
         progressBar.setVisibility(View.GONE);
-        if(!(event.reviews.size()>0)){
+        if (!(event.reviews.size() > 0)) {
+            isEmpty=true;
             empty.setText(R.string.no_review_available);
-        }
-        else {
+            empty.setVisibility(View.VISIBLE);
+        } else {
             mAdapter.addAll(event.reviews);
         }
-
-
-
     }
+
+
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        outState.putBoolean(Config.BUNDLE_IS_EMPTY,isEmpty);
+        outState.putBoolean(Config.BUNDLE_IS_LOADED,isAvailable);
         outState.putParcelableArrayList(Config.BUNDLE_REVIEWS, (ArrayList<? extends Parcelable>) mAdapter.getAll());
     }
 
@@ -114,7 +130,8 @@ public class ReviewFragment extends Fragment implements onRTItemClick {
 
     @Override
     public void onMovieClick(int position) {
-        //TODO: Open This link on youtube app
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mAdapter.get(position).getUrl()));
+        getActivity().startActivity(browserIntent);
 
     }
 }

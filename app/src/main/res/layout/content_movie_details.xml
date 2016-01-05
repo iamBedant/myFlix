@@ -109,8 +109,7 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/linear_layout_intro"
-             />
+            android:layout_below="@id/linear_layout_intro" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager"

@@ -49,12 +49,21 @@ public class TrailersFragment extends Fragment implements onRTItemClick {
 
     Context mContext;
     TrailerAdapter mAdapter;
+    Boolean isAvailable = false;
+    Boolean isEmpty = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trailers, container, false);
         ButterKnife.bind(this, view);
+        if(!isAvailable){
+            progressBar.setVisibility(View.VISIBLE);
+        }
+        if(isEmpty){
+            empty.setText(R.string.no_trailer_available);
+            empty.setVisibility(View.VISIBLE);
+        }
         SetUpRecyclerView();
         return view;
     }
@@ -66,6 +75,8 @@ public class TrailersFragment extends Fragment implements onRTItemClick {
         mAdapter = new TrailerAdapter(mContext, this);
 
         if (savedInstanceState != null) {
+            isEmpty = savedInstanceState.getBoolean(Config.BUNDLE_IS_EMPTY);
+            isAvailable = savedInstanceState.getBoolean(Config.BUNDLE_IS_LOADED);
             ArrayList<Videos> videos = savedInstanceState.getParcelableArrayList(Config.BUNDLE_TRAILERS);
             mAdapter.addAll(videos);
         }
@@ -74,14 +85,19 @@ public class TrailersFragment extends Fragment implements onRTItemClick {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        outState.putBoolean(Config.BUNDLE_IS_EMPTY,isEmpty);
+        outState.putBoolean(Config.BUNDLE_IS_LOADED,isAvailable);
         outState.putParcelableArrayList(Config.BUNDLE_TRAILERS, (ArrayList<? extends Parcelable>) mAdapter.getAll());
     }
 
     @Subscribe
     public void TrailersLoadedEvent(TrailerLoadedEvent event) {
+        isAvailable = true;
         progressBar.setVisibility(View.GONE);
         if (!(event.trailers.size() > 0)) {
-            empty.setText(R.string.no_review_available);
+            isEmpty= true;
+            empty.setText(R.string.no_trailer_available);
+            empty.setVisibility(View.VISIBLE);
         } else {
             mAdapter.addAll(event.trailers);
         }

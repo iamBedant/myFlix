@@ -33,7 +33,13 @@ public class OverviewFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_overview, container, false);
         ButterKnife.bind(this, view);
         overView = getArguments().getString(Config.BUNDLE_MOVIE_OVERVIEW);
-        overview.setText(overView);
+        if(overView.trim().length()==0|| overView==null){
+            overview.setText("No Overview available");
+        }
+        else {
+            overview.setText(overView);
+        }
+
         return view;
     }
 

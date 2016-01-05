@@ -47,7 +47,7 @@ public class MovieDetailsPresenter implements MovieDetailsContract.UserActionLis
         mMovieDetailsView.setMoviePoster(mMovie.getPosterImage());
         mMovieDetailsView.setTitle(mMovie.title);
         mMovieDetailsView.setRating(mMovie.vote_average);
-        mMovieDetailsView.setReleaseDate((String) android.text.format.DateFormat.format("yyyy", mMovie.release_date));
+        mMovieDetailsView.setReleaseDate(Utils.getStringFromDate(mMovie.getRelease_date()));
         VolleySingleton.getsInstance().cancelPendingRequests(TAG);
         getReviews(mMovie.getId());
         getTrailers(mMovie.getId());
@@ -70,35 +70,6 @@ public class MovieDetailsPresenter implements MovieDetailsContract.UserActionLis
 
     }
 
-    @Override
-    public void changeFavoriteButtonSrc(boolean isFavorite) {
-
-    }
-
-    @Override
-    public void changeFavoriteButtonBackgroundColor(int color) {
-
-    }
-
-    @Override
-    public void changePlayTrailerButtonBackgroundColor(int color) {
-
-    }
-
-    @Override
-    public void changeShareTrailerButtonBackgroundColor(int color) {
-
-    }
-
-    @Override
-    public void loadTrailers() {
-
-    }
-
-    @Override
-    public void loadFirstTrailer() {
-
-    }
 
 
     private void getResponse(String url, final int type) {
@@ -109,8 +80,6 @@ public class MovieDetailsPresenter implements MovieDetailsContract.UserActionLis
                     parseReview(response);
                 } else if (type == Config.TRAILER) {
                     parseTrailer(response);
-                } else {
-                    //TODO:Show error message;
                 }
             }
         },
@@ -128,6 +97,16 @@ public class MovieDetailsPresenter implements MovieDetailsContract.UserActionLis
                                 ShowErrorMessage("We are having problem with our server :(");
                             }
                         }
+
+                        // Sending an empty arrayList of movies
+                        //TODO: communicate with a methode
+
+                        if (type == Config.REVIEW) {
+                            mMovieDetailsView.setReviews(new ArrayList<Reviews>());
+                        } else if (type == Config.TRAILER) {
+                            mMovieDetailsView.setTrailers(new ArrayList<Videos>());
+                        }
+
                     }
                 });
 
@@ -225,11 +204,12 @@ public class MovieDetailsPresenter implements MovieDetailsContract.UserActionLis
 
                         reviews.add(trailer);
                     }
-                    mMovieDetailsView.setReviews(reviews);
+
 
                 } else {
-                    //TODO: notify no trailers available
                 }
+
+                mMovieDetailsView.setReviews(reviews);
             }
         } catch (JSONException e) {
 

@@ -17,7 +17,7 @@
     <dimen name="margin_large">16dp</dimen>
     <dimen name="app_bar_overlap_padding">64dp</dimen>
     <dimen name="detail_backdrop_height_large">400dp</dimen>
-    <dimen name="app_bar_overlap_padding_large">100dp</dimen>
+    <dimen name="app_bar_overlap_padding_large">60dp</dimen>
 
     <integer name="anim_short_duration">200</integer>
 

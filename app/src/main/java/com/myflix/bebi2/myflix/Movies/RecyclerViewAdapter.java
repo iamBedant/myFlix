@@ -89,6 +89,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
+
+    public void removeMovie(int itemId){
+        for(int i = 0 ; i<mMovies.size();i++){
+            if(itemId == mMovies.get(i).getId()){
+                mMovies.remove(i);
+                notifyItemRemoved(i);
+                return;
+            }
+        }
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @Bind(R.id.movie_poster_image_view)

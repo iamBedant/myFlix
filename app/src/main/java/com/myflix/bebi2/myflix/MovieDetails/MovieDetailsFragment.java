@@ -40,6 +40,7 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.myflix.bebi2.myflix.DB.FavouriteMovieProvider;
 import com.myflix.bebi2.myflix.DB.FavouriteMoviesColumn;
+import com.myflix.bebi2.myflix.Events.FavouriteRemovedEvent;
 import com.myflix.bebi2.myflix.Events.OverviewLoadedEvent;
 import com.myflix.bebi2.myflix.Events.ReviewLoadedEvent;
 import com.myflix.bebi2.myflix.Events.TrailerLoadedEvent;
@@ -144,6 +145,13 @@ public class MovieDetailsFragment extends Fragment implements MovieDetailsContra
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable(Config.BUNDLE_SINGLE_MOVIES, mMovie);
+        outState.putBoolean(Config.BUNDLE_IS_FAVOURITE, isFavorite);
+    }
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mUserActionListener = new MovieDetailsPresenter(mMovie, this);
@@ -185,8 +193,10 @@ public class MovieDetailsFragment extends Fragment implements MovieDetailsContra
                         getActivity().getContentResolver().delete(
                                 FavouriteMovieProvider.Movies.withId(mMovie.getId()), null, null);
 
+                        EventBus.getInstance().post(new FavouriteRemovedEvent(mMovie.getId()));
                         showMessage(mMovie.title + " " + "removed from favorites", 0);
                     }
+                    isFavorite = !isFavorite;
                     updateFavoriteBtn();
                 }
                 cursor.close();
@@ -205,11 +215,7 @@ public class MovieDetailsFragment extends Fragment implements MovieDetailsContra
 //    }
 
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        //TODO: SaveState
-        super.onSaveInstanceState(outState);
-    }
+
 
     private void setUpTabLayout() {
         if (viewPager != null) {
@@ -340,7 +346,6 @@ public class MovieDetailsFragment extends Fragment implements MovieDetailsContra
 
     private void updateFavoriteBtn() {
         fab.setImageDrawable(isFavorite ? mStarFilled : mStarOutline);
-        isFavorite = !isFavorite;
         if (fab.getScaleX() == 0) {
             // credits for onPreDraw technique: http://frogermcs.github.io/Instagram-with-Material-Design-concept-part-2-Comments-transition/
             fab.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
@@ -362,10 +367,7 @@ public class MovieDetailsFragment extends Fragment implements MovieDetailsContra
 
 
     /*-------------------------- Implementation of MovieDetails Contract.View------------------------- */
-    @Override
-    public void setProgressIndicator(boolean active) {
 
-    }
 
     @Override
     public void showMessage(String msg, int duration) {
@@ -391,10 +393,7 @@ public class MovieDetailsFragment extends Fragment implements MovieDetailsContra
         }
     }
 
-    @Override
-    public void setMovieBackdropImage(String backdropImage) {
 
-    }
 
     @Override
     public void setTitle(String _title) {
@@ -432,26 +431,6 @@ public class MovieDetailsFragment extends Fragment implements MovieDetailsContra
         } else {
             releaseDate.setText("Not Available");
         }
-    }
-
-    @Override
-    public void setFavoriteButtonSrc(boolean isFavorite) {
-
-    }
-
-    @Override
-    public void setFavoriteButtonBackgroundColor(int color) {
-
-    }
-
-    @Override
-    public void setPlayTrailerButtonBackgroundColor(int color) {
-
-    }
-
-    @Override
-    public void setShareTrailerButtonBackgroundColor(int color) {
-
     }
 
 }

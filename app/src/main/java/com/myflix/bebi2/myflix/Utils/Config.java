@@ -17,7 +17,7 @@ public class Config {
     public static final String API_TRAILER_BASE_API= "http://api.themoviedb.org/3/movie/";
 
     public static final String API_GET_MOVIE_LIST = "";
-    public static final String API_KEY="466533c74b7492ae259d6e77554bb96a";
+    public static final String API_KEY="[YOUR API KEY]";
     public static final String API_IMAGE_BASE_URL_POSTER="http://image.tmdb.org/t/p/w185";
     public static final String API_IMAGE_BASE_URL_BACKDROP="http://image.tmdb.org/t/p/w342";
 
@@ -37,13 +37,11 @@ public class Config {
     public static final String BUNDLE_REVIEWS ="_reviews";
     public static final String BUNDLE_MOVIE_OVERVIEW="_movie_overview";
     public static final String BUNDLE_IS_FAVOURITE ="_isFav";
+   public static final String BUNDLE_IS_LOADED="_is_loaded";
+    public static final String BUNDLE_IS_EMPTY="_is_empty";
     /*
      ---------------- SORT ORDER Strings -------------------
      */
-    public static final String SORT_BY_RATING="vote_average.desc";
-    public static final String SORT_BY_POPULARITY="popularity.desc";
-
-
     /*
     ---------------------------Volley TimeOut Request-----------------------
      */

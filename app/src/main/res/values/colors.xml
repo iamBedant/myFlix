@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="trailer_background">#efefef</color>
     <color name="white">#fff</color>
+    <color name="colorTextPrimary">#434343</color>
 </resources>

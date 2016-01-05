@@ -11,18 +11,11 @@ import java.util.List;
  */
 public class MovieDetailsContract {
     interface View {
-
-        void setProgressIndicator(boolean active);
-
         void showMessage(String msg, int duration);
 
         void setMoviePoster(String moviePoster);
 
-        void setMovieBackdropImage(String backdropImage);
-
         void setTitle(String title);
-
-
 
         void setTrailers(ArrayList<Videos> trailers);
 
@@ -31,32 +24,11 @@ public class MovieDetailsContract {
         void setRating(Float rating);
 
         void setReleaseDate(String releaseDate);
-
-        void setFavoriteButtonSrc(boolean isFavorite);
-
-        void setFavoriteButtonBackgroundColor(int color);
-
-        void setPlayTrailerButtonBackgroundColor(int color);
-
-        void setShareTrailerButtonBackgroundColor(int color);
-
     }
 
     interface UserActionListener {
 
         void showMovieDetails();
-
-        void changeFavoriteButtonSrc(boolean isFavorite);
-
-        void changeFavoriteButtonBackgroundColor(int color);
-
-        void changePlayTrailerButtonBackgroundColor(int color);
-
-        void changeShareTrailerButtonBackgroundColor(int color);
-
-        void loadTrailers();
-
-        void loadFirstTrailer();
     }
 }
 
